@@ -7,7 +7,7 @@ import {
   LineElement,
   Tooltip,
 } from "chart.js";
-import climateData from "../data/climateData.json";
+import climateData from "../../data/climateData.json";
 
 Chart.register(LinearScale, PointElement, LineElement, Tooltip);
 
@@ -114,8 +114,9 @@ const Graph = ({ selectedLocation }) => {
 
   return (
     <div>
-      <h2>Average Risk Rating Over Time</h2>
-      <Line data={chartData} options={chartOptions} />
+      <div className="chart-container">
+        <Line data={chartData} options={chartOptions} />
+      </div>
     </div>
   );
 };

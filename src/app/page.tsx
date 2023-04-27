@@ -3,12 +3,12 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import climateData from "../../data/climateData.json";
-import DataTable from "../../components/Table";
-import LineGraph from "../../components/Graph";
-import ColorBar from "../../components/RiskColorBar";
+import DataTable from "../components/Table";
+import LineGraph from "../components/Graph";
+import ColorBar from "../components/RiskColorBar";
 
 //map component has to be rendered client-side
-const DynamicMapComponent = dynamic(() => import("../../components/Map"), {
+const DynamicMapComponent = dynamic(() => import("../components/Map"), {
   ssr: false,
 });
 
@@ -62,30 +62,97 @@ export default function Home() {
   return (
     <>
       <ColorBar />
+{/* 
+      <div className="select-and-heading">
+        <div className="select-bar-container">
+          <button
+            className="select-bar-item"
+            value={2030}
+            onClick={() => setSelectedDecade(2030)}
+          >
+            2030
+          </button>
+          <button
+            className="select-bar-item"
+            value={2040}
+            onClick={() => setSelectedDecade(2040)}
+          >
+            2040
+          </button>
+          <button
+            className="select-bar-item"
+            value={2050}
+            onClick={() => setSelectedDecade(2050)}
+          >
+            2050
+          </button>
+          <button
+            className="select-bar-item"
+            value={2060}
+            onClick={() => setSelectedDecade(2060)}
+          >
+            2060
+          </button>
+          <button
+            className="select-bar-item"
+            value={2070}
+            onClick={() => setSelectedDecade(2070)}
+          >
+            2070
+          </button>
+        </div>
+      </div> */}
 
-      <div class="select-bar-container">
-        <button class="select-bar-item" data-value="2030">
-          2030
-        </button>
-        <button class="select-bar-item" data-value="2040">
-          2040
-        </button>
-        <button class="select-bar-item" data-value="2050">
-          2050
-        </button>
-        <button class="select-bar-item" data-value="2060">
-          2060
-        </button>
-        <button class="select-bar-item" data-value="2070">
-          2070
-        </button>
+      <div className="map-chart-container">
+        <div className="map-container">
+          <div className="select-bar-container">
+            <button
+              className="select-bar-item"
+              value={2030}
+              onClick={() => setSelectedDecade(2030)}
+            >
+              2030
+            </button>
+            <button
+              className="select-bar-item"
+              value={2040}
+              onClick={() => setSelectedDecade(2040)}
+            >
+              2040
+            </button>
+            <button
+              className="select-bar-item"
+              value={2050}
+              onClick={() => setSelectedDecade(2050)}
+            >
+              2050
+            </button>
+            <button
+              className="select-bar-item"
+              value={2060}
+              onClick={() => setSelectedDecade(2060)}
+            >
+              2060
+            </button>
+            <button
+              className="select-bar-item"
+              value={2070}
+              onClick={() => setSelectedDecade(2070)}
+            >
+              2070
+            </button>
+          </div>
+          <DynamicMapComponent
+            key={selectedDecade}
+            data={filteredData}
+            onSelectLocation={setSelectedLocation}
+          />
+        </div>
+        <div className="chart-container">
+          {/* <h2 className="chart-heading"> Average Risk Rating Over Time</h2> */}
+          <LineGraph data={filteredData} selectedLocation={selectedLocation} />
+        </div>
       </div>
-
-      <DynamicMapComponent
-        key={selectedDecade}
-        data={filteredData}
-        onSelectLocation={setSelectedLocation}
-      />
 
       {/* <select
         value={selectedDecade}
@@ -105,8 +172,6 @@ export default function Home() {
       /> */}
 
       <DataTable columns={columns} data={filteredData} />
-
-      <LineGraph data={filteredData} selectedLocation={selectedLocation} />
     </>
   );
 }
