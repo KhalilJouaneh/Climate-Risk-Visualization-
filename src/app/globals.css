@@ -2,26 +2,194 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* start map */
+
+.map-container {
+  height: 50vh;
+  width: 50%;
+  margin: 50px auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* select year */
+.select-bar-container {
+  display: flex;
+  border: 1px solid #000;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.select-bar-item {
+  background-color: #fff;
+  color: #000;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-right: 1px solid #000;
+  font-size: 14px;
 }
+
+.select-bar-item:last-child {
+  border-right: none;
+}
+
+.select-bar-item:hover,
+.select-bar-item.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* end of select year */
+
+/* risk color bar */
+
+.color-heading {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.color-bar {
+  display: flex;
+  width: 25%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.color-bar__segment {
+  flex-grow: 1;
+  height: 20px;
+}
+
+.color-bar__segment--green {
+  background-color: green;
+}
+
+.color-bar__segment--yellow {
+  background-color: yellow;
+}
+
+.color-bar__segment--orange {
+  background-color: orange;
+}
+
+.color-bar__segment--red {
+  background-color: red;
+}
+
+.color-bar__list {
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.color-bar__bullet {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.color-bar__bullet--green {
+  background-color: green;
+}
+
+.color-bar__bullet--yellow {
+  background-color: yellow;
+}
+
+.color-bar__bullet--orange {
+  background-color: orange;
+}
+
+.color-bar__bullet--red {
+  background-color: red;
+}
+
+/* end of map */
+
+/* start of table */
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 75%;
+  margin: 0 auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: aliceblue;
+  color: black;
+  font-weight: bold;
+  border-bottom: 3px solid;
+}
+
+table td:nth-child(1),
+table th:nth-child(1) {
+  width: 5%;
+}
+table td:nth-child(2),
+table th:nth-child(2) {
+  width: 5%;
+}
+table td:nth-child(3),
+table th:nth-child(3) {
+  width: 5%;
+}
+table td:nth-child(4),
+table th:nth-child(4) {
+  width: 7.5%;
+}
+table td:nth-child(5),
+table th:nth-child(5) {
+  width: 5%;
+}
+table td:nth-child(6),
+table th:nth-child(6) {
+  width: 2.5%;
+}
+table td:nth-child(7),
+table th:nth-child(7) {
+  width: 10%;
+}
+
+table tbody tr:first-child td:first-child {
+  border-top-left-radius: 10px;
+}
+
+table tbody tr:first-child td:last-child {
+  border-top-right-radius: 10px;
+}
+
+table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.pagination {
+  width: 25%;
+  margin: 40px auto;
+}
+
+/* end of table */
+
+/* start line chart */
+
+/* end line chart */
