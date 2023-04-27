@@ -7,6 +7,7 @@ import DataTable from "../components/Table";
 import LineGraph from "../components/Graph";
 import ColorBar from "../components/RiskColorBar";
 
+
 //map component has to be rendered client-side
 const DynamicMapComponent = dynamic(() => import("../components/Map"), {
   ssr: false,
@@ -62,46 +63,6 @@ export default function Home() {
   return (
     <>
       <ColorBar />
-{/* 
-      <div className="select-and-heading">
-        <div className="select-bar-container">
-          <button
-            className="select-bar-item"
-            value={2030}
-            onClick={() => setSelectedDecade(2030)}
-          >
-            2030
-          </button>
-          <button
-            className="select-bar-item"
-            value={2040}
-            onClick={() => setSelectedDecade(2040)}
-          >
-            2040
-          </button>
-          <button
-            className="select-bar-item"
-            value={2050}
-            onClick={() => setSelectedDecade(2050)}
-          >
-            2050
-          </button>
-          <button
-            className="select-bar-item"
-            value={2060}
-            onClick={() => setSelectedDecade(2060)}
-          >
-            2060
-          </button>
-          <button
-            className="select-bar-item"
-            value={2070}
-            onClick={() => setSelectedDecade(2070)}
-          >
-            2070
-          </button>
-        </div>
-      </div> */}
 
       <div className="map-chart-container">
         <div className="map-container">

@@ -7,10 +7,6 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
-.select-and-heading {
-  /* display: flex; */
-}
-
 .chart-container {
   min-width: 45%;
   height: 100%;
@@ -18,8 +14,6 @@ html {
 
 .map-chart-container {
   display: flex;
-  /* justify-content: space-around; */
-  /* justify-content: center; */
   align-items: center;
   width: 100%;
   margin-bottom: 100px;
@@ -53,12 +47,11 @@ html {
 
 .select-bar-item {
   border: 1px solid #000;
-  background-color: #fff;
+  background-color: #fdfdfd;
   color: #000;
   padding: 8px 12px;
   cursor: pointer;
-  border-right: 1px solid #000;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .select-bar-item:first-child {
@@ -183,7 +176,7 @@ th {
 
 table td:nth-child(1),
 table th:nth-child(1) {
-  width: 5%;
+  width: 10%;
 }
 table td:nth-child(2),
 table th:nth-child(2) {
@@ -226,10 +219,6 @@ table tbody tr:last-child td:last-child {
   border-bottom-right-radius: 10px;
 }
 
-/* .pagination {
-  width: 25%;
-  margin: 40px auto;
-} */
 
 .pagination {
   display: flex;
@@ -239,7 +228,6 @@ table tbody tr:last-child td:last-child {
   font-family: Arial, sans-serif;
   flex-wrap: wrap;
   margin: 40px auto;
-
 }
 
 .pagination button {
@@ -251,6 +239,8 @@ table tbody tr:last-child td:last-child {
   cursor: pointer;
   border-radius: 3px;
   transition: background-color 0.3s;
+  width: 40px;
+  height: 40px;
 }
 
 .pagination button:disabled {
@@ -263,20 +253,20 @@ table tbody tr:last-child td:last-child {
 }
 
 .pagination span {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .pagination input {
   width: 50px;
   padding: 2px 4px;
-  font-size: 14px;
+  font-size: 18px;
   border: 1px solid #ced4da;
   border-radius: 3px;
   margin-left: 4px;
 }
 
 .pagination select {
-  font-size: 14px;
+  font-size: 18px;
   border: 1px solid #ced4da;
   border-radius: 3px;
   padding: 3px;

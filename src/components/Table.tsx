@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
+import { BiFirstPage, BiLastPage } from "react-icons/bi";
 
 const DataTable = ({ data, columns }) => {
   const {
@@ -100,7 +101,7 @@ const DataTable = ({ data, columns }) => {
       {/* Pagination Section */}
       <div className="pagination">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {"<<"}
+          <BiFirstPage />
         </button>{" "}
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           {"<"}
@@ -109,7 +110,7 @@ const DataTable = ({ data, columns }) => {
           {">"}
         </button>{" "}
         <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {">>"}
+          <BiLastPage />
         </button>{" "}
         <span>
           Page{" "}
