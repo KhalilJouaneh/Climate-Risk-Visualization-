@@ -6,10 +6,10 @@ import L from "leaflet";
 
 //get color by risk rating
 const getColorByRiskRating = (riskRating: number) => {
-  if (riskRating >= 0.75) return "red";
-  if (riskRating >= 0.5) return "orange";
-  if (riskRating >= 0.25) return "yellow";
-  return "green";
+  if (riskRating >= 0.75) return "#E76F61"; //red
+  if (riskRating >= 0.5) return "#F5A071"; //orange
+  if (riskRating >= 0.25) return "#F7DC75"; //yellow
+  return "#82C596"; //green
 };
 
 // Set up the icon for the markers
@@ -78,14 +78,6 @@ const MapComponent = ({ data, onSelectLocation }) => {
                 onSelectLocation(item);
               },
             }}
-            // eventHandlers={{
-            //   mouseover: (e) => {
-            //     e.target.openPopup();
-            //   },
-            //   mouseout: (e) => {
-            //     e.target.closePopup();
-            //   },
-            // }}
           >
             <Popup>
               {item["Asset Name"]} - {item["Business Category"]}

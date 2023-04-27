@@ -34,6 +34,7 @@ const DataTable = ({ data, columns }) => {
     usePagination
   );
 
+
   return (
     <>
       <div className="table-container">

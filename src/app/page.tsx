@@ -3,14 +3,20 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import climateData from "../../data/climateData.json";
-import DataTable from "../components/Table";
-import LineGraph from "../components/Graph";
 import ColorBar from "../components/RiskColorBar";
+import Head from "next/head";
 
-
-//map component has to be rendered client-side
+//lazy loading components
 const DynamicMapComponent = dynamic(() => import("../components/Map"), {
   ssr: false,
+});
+
+const DynamicLineGraph = dynamic(() => import("../components/Graph"), {
+  loading: () => <div>Loading...</div>,
+});
+
+const DynamicDataTable = dynamic(() => import("../components/Table"), {
+  loading: () => <div>Loading...</div>,
 });
 
 const columns = [
@@ -53,6 +59,13 @@ export default function Home() {
   const [selectedAsset, setSelectedAsset] = useState("");
   const [selectedBusinessCategory, setSelectedBusinessCategory] = useState("");
 
+  //style selected decade
+  const isSelected = (decade) => {
+    return selectedDecade === decade
+      ? { backgroundColor: "#007bff", color: "white" }
+      : {};
+  };
+
   // filter data based on selected decade
   const filteredData = climateData.filter(
     (item) => item.Year === selectedDecade
@@ -62,6 +75,12 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <ColorBar />
 
       <div className="map-chart-container">
@@ -69,6 +88,7 @@ export default function Home() {
           <div className="select-bar-container">
             <button
               className="select-bar-item"
+              style={isSelected(2030)}
               value={2030}
               onClick={() => setSelectedDecade(2030)}
             >
@@ -76,6 +96,7 @@ export default function Home() {
             </button>
             <button
               className="select-bar-item"
+              style={isSelected(2040)}
               value={2040}
               onClick={() => setSelectedDecade(2040)}
             >
@@ -83,6 +104,7 @@ export default function Home() {
             </button>
             <button
               className="select-bar-item"
+              style={isSelected(2050)}
               value={2050}
               onClick={() => setSelectedDecade(2050)}
             >
@@ -90,6 +112,7 @@ export default function Home() {
             </button>
             <button
               className="select-bar-item"
+              style={isSelected(2060)}
               value={2060}
               onClick={() => setSelectedDecade(2060)}
             >
@@ -97,12 +120,14 @@ export default function Home() {
             </button>
             <button
               className="select-bar-item"
+              style={isSelected(2070)}
               value={2070}
               onClick={() => setSelectedDecade(2070)}
             >
               2070
             </button>
           </div>
+
           <DynamicMapComponent
             key={selectedDecade}
             data={filteredData}
@@ -111,28 +136,14 @@ export default function Home() {
         </div>
         <div className="chart-container">
           {/* <h2 className="chart-heading"> Average Risk Rating Over Time</h2> */}
-          <LineGraph data={filteredData} selectedLocation={selectedLocation} />
+          <DynamicLineGraph
+            data={filteredData}
+            selectedLocation={selectedLocation}
+          />
         </div>
       </div>
 
-      {/* <select
-        value={selectedDecade}
-        onChange={(e) => setSelectedDecade(+e.target.value)}
-      >
-        <option value={2030}>2030</option>
-        <option value={2040}>2040</option>
-        <option value={2050}>2050</option>
-        <option value={2060}>2060</option>
-        <option value={2070}>2070</option>
-      </select>
-
-      <DynamicMapComponent
-        key={selectedDecade}
-        data={filteredData}
-        onSelectLocation={setSelectedLocation}
-      /> */}
-
-      <DataTable columns={columns} data={filteredData} />
+      <DynamicDataTable columns={columns} data={filteredData} />
     </>
   );
 }
