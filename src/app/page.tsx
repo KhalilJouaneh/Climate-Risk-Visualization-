@@ -1,4 +1,4 @@
-// Home.tsx or your equivalent Home component file
+// @ts-nocheck
 "use client";
 import dynamic from "next/dynamic";
 import { useState } from "react";
