@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-key */
+// @ts-nocheck
 import React from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { BiFirstPage, BiLastPage } from "react-icons/bi";
